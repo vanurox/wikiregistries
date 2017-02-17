@@ -1,6 +1,11 @@
+<div class = "alert alert-danger" style="width:50%" *ngIf="status">
+{{status}}
+</div>
+
 <form #f="ngForm" (ngSubmit)="login()">
     <div ng-control-group="credentials">
         <div class="container">
+            
             <div class="title">
                 Welcome
             </div>

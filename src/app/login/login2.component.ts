@@ -12,7 +12,8 @@ import {User} from '../user/user';
 })
  
 export class LoginComponent {
- 
+    public status;
+    public response;
     public user =   new User(0,'','','','',1,'', 1234,1,1,1,'',0,'',false);
 
     public errorMsg = '';
@@ -34,23 +35,14 @@ export class LoginComponent {
             this.router.navigate(['/']);
         } 
         else {
-            if(res.status == 1) {
-                alert(res.statustext);
-
-            }
-            if(res.status == 2) {
-                alert(res.statustext);
-                
-            }
-            if(res.status == 3) {
-                alert(res.statustext);
-                
+            this.response = res.status;
+            if(this.response == 1 || this.response==2 || this.response==3) {
+                this.status = res.statustext;
+                // alert(res.statustext);
             }
                 this.userParams.loginfailed = true;
                 this.router.navigate(['/login']);
             }
-
-
         },(err)=>{
             console.log(err);
         })
