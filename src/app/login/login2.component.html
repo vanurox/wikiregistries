@@ -1,0 +1,51 @@
+<form #f="ngForm" (ngSubmit)="login()">
+    <div ng-control-group="credentials">
+        <div class="container">
+            <div class="title">
+                Welcome
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <label for="email">Email</label>
+                        <input
+                                type="text"
+                                id="email"
+                                ng-control="email"
+                                name="email"
+                                [(ngModel)]="userParams.email"
+                                #email="ngModel"
+                                email
+                                required>
+                    <div style="color:red">
+                    <p *ngIf="email.errors?.email">Email not Valid</p>
+                    <p *ngIf="email.errors?.required">Please enter Email</p>
+                    </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <label for="password">Password</label>
+                        <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                ng-control="password"
+                                [(ngModel)]="userParams.password"
+                                #password="ngModel"
+                                password
+                                required
+                                minlength="5">
+                    <div style="color:red">
+                    <p *ngIf="password.errors?.minlength">Password should be atleast 5 characters</p>
+                    <p *ngIf="password.errors?.required">Please enter password</p>
+                    </div>
+                    </div>
+                </div>
+
+                <span>{{errorMsg}}</span>
+                <button type="submit" [disabled]="!f.valid">Login!</button>
+            </div>
+        </div>
+    </div>
+</form>
